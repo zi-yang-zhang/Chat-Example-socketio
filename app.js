@@ -5,7 +5,10 @@ var io = require('socket.io')(server);
 app.get('/', function(req, res){
     res.sendfile('index.html');
 });
-
+io.configure(function () {
+    io.set("transports", ["xhr-polling"]);
+    io.set("polling duration", 10);
+});
 io.on('connection', function(socket){
     socket.on('chat message', function(msg){
         io.emit('new message', msg);
@@ -16,7 +19,7 @@ io.on('connection', function(socket){
     });
 });
 
-
-server.listen(3000, function(){
+var port = process.env.PORT || 3000
+server.listen(port, function(){
     console.log('listening on *:3000');
 });
