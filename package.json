@@ -1,7 +1,7 @@
 {
     "name": "chat",
     "version": "0.0.1",
-    "private":"test",
+    "main": "app.js",
     "dependencies":{
         "socket.io":"1.0.4",
         "express":"4.4.3"
